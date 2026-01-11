@@ -1,0 +1,36 @@
+labels:
+  io.cattle.role: project
+  io.rancher.app_min_version: 9.0.2
+questions:
+  - variable: SITE
+    label: "SITE"
+    description: "e.g. production"
+    type: string
+    default: "production"
+  - variable: DATABASE_URI
+    label: "DATABASE_URI"
+    description: "MongoDB connection string"
+    type: string
+  - variable: REDIS
+    label: "REDIS"
+    description: "Redis connection string"
+    type: string
+  - variable: REDIS_QUEUE
+    label: "REDIS_QUEUE"
+    description: "Redis queue connection string"
+    type: string
+  - variable: HOST
+    label: "HOST"
+    description: "Domain for callback URL (e.g., cb-copo.codechill.io)"
+    type: string
+    default: "localhost"
+  - variable: COPO_API_URL
+    label: "COPO_API_URL"
+    description: "Copo API URL"
+    type: string
+    default: "https://merchant.copo.vip"
+  - variable: JWT_SECRET
+    label: "JWT_SECRET"
+    description: "JWT secret for authentication"
+    type: string
+    default: "default-secret"

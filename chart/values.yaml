@@ -12,11 +12,23 @@ service:
   type: ClusterIP
   port: 80
 
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: cb-copo.codechill.io
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
 # Environment variables
 env:
   DATABASE_URI: ""
   REDIS: ""
   REDIS_QUEUE: ""
+  HOST: "localhost"
   COPO_API_URL: "https://merchant.copo.vip"
   JWT_SECRET: ""
   PORT: "3000"

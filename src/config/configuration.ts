@@ -7,6 +7,10 @@ export default () => ({
   copo: {
     apiUrl: process.env.COPO_API_URL || 'https://merchant.copo.vip',
   },
+  jwt: {
+    secret: process.env.JWT_SECRET || 'default-secret',
+  },
   port: parseInt(process.env.PORT, 10) || 3000,
   site: process.env.SITE || 'production',
+  host: process.env.HOST || 'localhost', // Important: Used for callback URL
 });

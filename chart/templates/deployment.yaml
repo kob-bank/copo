@@ -41,6 +41,8 @@ spec:
           value: {{ .Values.env.REDIS | quote }}
         - name: REDIS_QUEUE
           value: {{ .Values.env.REDIS_QUEUE | quote }}
+        - name: HOST
+          value: {{ .Values.env.HOST | quote }}
         - name: COPO_API_URL
           value: {{ .Values.env.COPO_API_URL | quote }}
         - name: JWT_SECRET

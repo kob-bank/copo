@@ -47,12 +47,14 @@ import {
 export class PaymentService {
   private logger = new KobLogger(PaymentService.name);
   private readonly apiBaseUrl: string;
+  private readonly host: string;
 
   constructor(
     private readonly configService: ConfigService,
     private readonly depositRepository: DepositRepository,
   ) {
     this.apiBaseUrl = this.configService.get<string>('copo.apiUrl', 'https://merchant.copo.vip');
+    this.host = this.configService.get<string>('HOST') || 'localhost';
   }
 
   /**
@@ -136,7 +138,9 @@ export class PaymentService {
       const payload: CopoPaymentRequestInterface = {
         accessType: '1',
         merchantId: dto.params.merchantId,
-        notifyUrl: dto.params.callbackURL,
+        // ⚠️ IMPORTANT: Use microservice HOST for callback URL (FDPAY Pattern)
+        // Provider will callback to microservice, then we forward to BO
+        notifyUrl: `https://${this.host}/callback`,
         pageUrl: dto.params.resultURL || dto.params.callbackURL,
         language: 'zh-CN',
         orderNo: orderNo,
